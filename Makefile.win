@@ -1,0 +1,87 @@
+# Project: Zombie
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = callbacks/OnGameModeInit.o callbacks/OnPlayerCmdText.o callbacks/OnPlayerDisConnect.o callbacks/OnPlayerDeath.o callbacks/OnPlayerKey.o callbacks/OnPlayerSpawn.o callbacks/OnPlayerTakeDmg.o callbacks/OnPlayerText.o callbacks/OnPlayerUpdate.o callbacks/OnPlayerWpnShot.o callbacks/OnPlayerPickUp.o InitPlugin.o Natives.o callbacks/OnTime.o callbacks/OnInfect.o GameEngines/GenerateClasses.o GameEngines/LoadNextMap.o GameEngines/Register_Login.o callbacks/Rare.o includes/GameVars.o
+LINKOBJ  = callbacks/OnGameModeInit.o callbacks/OnPlayerCmdText.o callbacks/OnPlayerDisConnect.o callbacks/OnPlayerDeath.o callbacks/OnPlayerKey.o callbacks/OnPlayerSpawn.o callbacks/OnPlayerTakeDmg.o callbacks/OnPlayerText.o callbacks/OnPlayerUpdate.o callbacks/OnPlayerWpnShot.o callbacks/OnPlayerPickUp.o InitPlugin.o Natives.o callbacks/OnTime.o callbacks/OnInfect.o GameEngines/GenerateClasses.o GameEngines/LoadNextMap.o GameEngines/Register_Login.o callbacks/Rare.o includes/GameVars.o
+LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib32" -s  bin/sqlite3.dll -m32
+INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Sanya/Zombie/Zombie/includes"
+CXXINCS  = -I"C:/Sanya/Zombie/Zombie/includes"
+BIN      = ../../samp037_svr_R2-1-1_win32/plugins/zombie.dll
+CXXFLAGS = $(CXXINCS) -m32 -masm=intel -D UNICODE -std=c99 -Wall -O2
+CFLAGS   = $(INCS) -m32 -masm=intel -D UNICODE -std=c99 -Wall -O2
+RM       = rm.exe -f
+DEF      = ../../samp037_svr_R2-1-1_win32/plugins/libzombie.def
+STATIC   = ../../samp037_svr_R2-1-1_win32/plugins/libzombie.a
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN) $(DEF) $(STATIC)
+
+$(BIN): $(LINKOBJ)
+	$(CC) -shared $(LINKOBJ) -o $(BIN) $(LIBS) -Wl,--output-def,$(DEF),--out-implib,$(STATIC),--add-stdcall-alias
+
+callbacks/OnGameModeInit.o: callbacks/OnGameModeInit.c
+	$(CC) -c callbacks/OnGameModeInit.c -o callbacks/OnGameModeInit.o $(CFLAGS)
+
+callbacks/OnPlayerCmdText.o: callbacks/OnPlayerCmdText.c
+	$(CC) -c callbacks/OnPlayerCmdText.c -o callbacks/OnPlayerCmdText.o $(CFLAGS)
+
+callbacks/OnPlayerDisConnect.o: callbacks/OnPlayerDisConnect.c
+	$(CC) -c callbacks/OnPlayerDisConnect.c -o callbacks/OnPlayerDisConnect.o $(CFLAGS)
+
+callbacks/OnPlayerDeath.o: callbacks/OnPlayerDeath.c
+	$(CC) -c callbacks/OnPlayerDeath.c -o callbacks/OnPlayerDeath.o $(CFLAGS)
+
+callbacks/OnPlayerKey.o: callbacks/OnPlayerKey.c
+	$(CC) -c callbacks/OnPlayerKey.c -o callbacks/OnPlayerKey.o $(CFLAGS)
+
+callbacks/OnPlayerSpawn.o: callbacks/OnPlayerSpawn.c
+	$(CC) -c callbacks/OnPlayerSpawn.c -o callbacks/OnPlayerSpawn.o $(CFLAGS)
+
+callbacks/OnPlayerTakeDmg.o: callbacks/OnPlayerTakeDmg.c
+	$(CC) -c callbacks/OnPlayerTakeDmg.c -o callbacks/OnPlayerTakeDmg.o $(CFLAGS)
+
+callbacks/OnPlayerText.o: callbacks/OnPlayerText.c
+	$(CC) -c callbacks/OnPlayerText.c -o callbacks/OnPlayerText.o $(CFLAGS)
+
+callbacks/OnPlayerUpdate.o: callbacks/OnPlayerUpdate.c
+	$(CC) -c callbacks/OnPlayerUpdate.c -o callbacks/OnPlayerUpdate.o $(CFLAGS)
+
+callbacks/OnPlayerWpnShot.o: callbacks/OnPlayerWpnShot.c
+	$(CC) -c callbacks/OnPlayerWpnShot.c -o callbacks/OnPlayerWpnShot.o $(CFLAGS)
+
+callbacks/OnPlayerPickUp.o: callbacks/OnPlayerPickUp.c
+	$(CC) -c callbacks/OnPlayerPickUp.c -o callbacks/OnPlayerPickUp.o $(CFLAGS)
+
+InitPlugin.o: InitPlugin.c
+	$(CC) -c InitPlugin.c -o InitPlugin.o $(CFLAGS)
+
+Natives.o: Natives.c
+	$(CC) -c Natives.c -o Natives.o $(CFLAGS)
+
+callbacks/OnTime.o: callbacks/OnTime.c
+	$(CC) -c callbacks/OnTime.c -o callbacks/OnTime.o $(CFLAGS)
+
+callbacks/OnInfect.o: callbacks/OnInfect.c
+	$(CC) -c callbacks/OnInfect.c -o callbacks/OnInfect.o $(CFLAGS)
+
+GameEngines/GenerateClasses.o: GameEngines/GenerateClasses.c
+	$(CC) -c GameEngines/GenerateClasses.c -o GameEngines/GenerateClasses.o $(CFLAGS)
+
+GameEngines/LoadNextMap.o: GameEngines/LoadNextMap.c
+	$(CC) -c GameEngines/LoadNextMap.c -o GameEngines/LoadNextMap.o $(CFLAGS)
+
+GameEngines/Register_Login.o: GameEngines/Register_Login.c
+	$(CC) -c GameEngines/Register_Login.c -o GameEngines/Register_Login.o $(CFLAGS)
+
+callbacks/Rare.o: callbacks/Rare.c
+	$(CC) -c callbacks/Rare.c -o callbacks/Rare.o $(CFLAGS)
+
+includes/GameVars.o: includes/GameVars.c
+	$(CC) -c includes/GameVars.c -o includes/GameVars.o $(CFLAGS)
